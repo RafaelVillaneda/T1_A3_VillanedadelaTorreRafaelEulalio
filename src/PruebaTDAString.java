@@ -40,6 +40,21 @@ class StringTDA{
 			String carac=entrada.nextLine();
 			setCadena(getCadena().replace(carac,""));
 			System.out.println(getCadena());
+		}else if(opcion.equalsIgnoreCase("B")) {
+			System.out.println("Desde que pocicion a que pocicion deseas eliminar");
+			System.out.println("Ejemplo '5-6'");
+			String subcadEliminar=entrada.nextLine();
+			String cadRes="";
+			int poci=Integer.parseInt(subcadEliminar.split("-")[0]),poci2=Integer.parseInt(subcadEliminar.split("-")[1]);
+			poci=poci-1;
+			poci2=poci2-1;
+			for(int i=0;i<getCadena().length();i++) {
+				if(!(i>=poci && i<=poci2)) {
+					cadRes=cadRes+getCadena().substring(i,i+1);
+				}
+			}
+			setCadena(cadRes);
+			System.out.println("Resultado: "+getCadena());
 		}
 	}
 	
