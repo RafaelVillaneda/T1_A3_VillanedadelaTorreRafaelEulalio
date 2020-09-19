@@ -8,6 +8,7 @@ import java.util.Scanner;
 4.Mostar la cadena con la primer letra de cada palabra en mayúscula
  */
 class StringTDA{
+	Scanner entrada=new Scanner(System.in);
 	private String cadena;
 
 	public StringTDA(String cadena) {
@@ -31,6 +32,14 @@ class StringTDA{
 		String[] sep=getCadena().split(" ");
 		for (int i = 0; i < sep.length; i++) {
 			System.out.println(sep[i]);
+		}
+	}
+	public void agregarEliminarCaracteresY_OSubcadenasPociEspecificas(String opcion){
+		if(opcion.equalsIgnoreCase("A")) {
+			System.out.println("Que letra quieres eliminar de tu palabra/frase?");
+			String carac=entrada.nextLine();
+			setCadena(getCadena().replace(carac,""));
+			System.out.println(getCadena());
 		}
 	}
 	
@@ -57,11 +66,35 @@ public class PruebaTDAString {
 					System.out.println("Debes de ingresar un numero");
 					op=0;
 				}
+				entrada.nextLine();
 			switch (op) {
 			case 1:
 				cade.mostrarCadenaInvertidaLetrasPalabras();
 				break;
-	
+			case 2:
+				boolean bandera=true;
+				String op1="";
+				do {
+				System.out.println("Elige la opcion deseada");
+				System.out.println("A) Eliminar 'X' caracter de la palabra");
+				System.out.println("B) Eliminar fragmento de la palabra en base a su pocicion ("+cade.getCadena().length()+" tamaño de espacios en palabra actual)");
+				op1=entrada.nextLine().toUpperCase();
+				switch (op1) {
+				case "A":
+					cade.agregarEliminarCaracteresY_OSubcadenasPociEspecificas(op1);
+					break;
+				case "B":
+					cade.agregarEliminarCaracteresY_OSubcadenasPociEspecificas(op1);
+					break;
+				default:
+					System.out.println("Elige una opcion correcta");
+					break;
+				}
+				if(op1.equalsIgnoreCase("A") || op1.equalsIgnoreCase("B")) {
+					bandera=false;
+					}
+				}while(bandera==true);
+				break;
 			default:
 				System.out.println("Ingresa una opcion disponible que este en el menu");
 				break;
