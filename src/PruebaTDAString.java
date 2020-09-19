@@ -49,7 +49,7 @@ class StringTDA{
 			int poci=Integer.parseInt(subcadEliminar.split("-")[0]),poci2=Integer.parseInt(subcadEliminar.split("-")[1]);
 			poci=poci-1;
 			poci2=poci2-1;
-			if((poci<getCadena().length() || poci2<getCadena().length()) ||(!(poci<0 || poci2<0))) {
+			if((poci<getCadena().length() || poci2<getCadena().length())) {
 				for(int i=0;i<getCadena().length();i++) {
 					if(!(i>=poci && i<=poci2)) {
 						cadRes=cadRes+getCadena().substring(i,i+1);
@@ -60,6 +60,33 @@ class StringTDA{
 			}
 			setCadena(cadRes);
 			System.out.println("Resultado: "+getCadena());
+		}else if(opcion.equalsIgnoreCase("C")) {
+			System.out.println("Que pocicion quieres cambiar de tu palabra/frase?");
+			int poci=0;
+			boolean bandera=false;
+			try {
+			poci=entrada.nextInt();
+			}catch(InputMismatchException e) {
+				System.out.println("No ingresaste un valor numerico");
+				bandera=true;
+			}
+			entrada.nextLine();
+			System.out.println("Por que caracter lo deseas cambiar?");
+			String carac=entrada.nextLine();
+			if(bandera==false) {
+				String copi="";
+				for(int i=0;i<getCadena().length();i++) {
+					if(poci-1==i) {
+						copi=copi+carac;
+					}else {
+						copi=copi+getCadena().substring(i, i+1);
+					}
+					
+				}
+				setCadena(copi);
+				System.out.println(getCadena());
+			}
+			
 		}
 	}
 	public void mostrarMayusculaCadaPalabra() {
@@ -108,7 +135,7 @@ public class PruebaTDAString {
 		String cad=entrada.nextLine();
 		StringTDA cade=new StringTDA(cad);
 		do {
-			System.out.println("Elige la opcion que desses");
+			System.out.println("Elige la opcion que necesites");
 			System.out.println("1-Mostrar la cadena invertida por letra y por palabras");
 			System.out.println("2-Agregar/eliminar caracteres y/o subcadenas en posiciones especificas");
 			System.out.println("3-Mostar la cadena con la primer letra de cada palabra en mayúscula");
@@ -133,6 +160,7 @@ public class PruebaTDAString {
 					System.out.println("Elige la opcion deseada");
 					System.out.println("A) Eliminar 'X' caracter de la palabra");
 					System.out.println("B) Eliminar fragmento de la palabra en base a su pocicion ("+cade.getCadena().length()+" tamaño de espacios en palabra actual)");
+					System.out.println("C) Agregar 'X' caracter de la palabra en 'X'pocicion");
 					op1=entrada.nextLine().toUpperCase();
 					switch (op1) {
 					case "A":
@@ -141,11 +169,15 @@ public class PruebaTDAString {
 					case "B":
 						cade.agregarEliminarCaracteresY_OSubcadenasPociEspecificas(op1);
 						break;
+					case "C":
+						cade.agregarEliminarCaracteresY_OSubcadenasPociEspecificas(op1);
+						System.out.println(cade.getCadena());
+						break;
 					default:
 						System.out.println("Elige una opcion correcta");
 						break;
 					}	
-					if(op1.equalsIgnoreCase("A") || op1.equalsIgnoreCase("B")) {
+					if(op1.equalsIgnoreCase("A") || op1.equalsIgnoreCase("B") || op1.equalsIgnoreCase("C")) {
 						bandera=false;
 						}
 					}while(bandera==true);
