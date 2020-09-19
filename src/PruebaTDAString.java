@@ -11,6 +11,7 @@ import java.util.Scanner;
 class StringTDA{
 	Scanner entrada=new Scanner(System.in);
 	private String cadena;
+	
 
 	public StringTDA(String cadena) {
 		this.cadena = cadena;
@@ -23,6 +24,7 @@ class StringTDA{
 		this.cadena = cadena;
 	}
 
+	
 	public void mostrarCadenaInvertidaLetrasPalabras() {
 		System.out.println("Cadena invertida");
 		for (int i=getCadena().length()-1; i >=0; i--) {
@@ -141,7 +143,6 @@ public class PruebaTDAString {
 			System.out.println("3-Mostar la cadena con la primer letra de cada palabra en mayúscula");
 			System.out.println("4-Cambiar la cadena");
 			System.out.println("5-Salir");
-			//entrada.nextLine();
 				try {
 					op=entrada.nextByte();
 				} catch (InputMismatchException e) {
