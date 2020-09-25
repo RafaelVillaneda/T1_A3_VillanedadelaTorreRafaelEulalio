@@ -126,6 +126,16 @@ class StringTDA{
 		}
 		System.out.println(getCadena());
 	}
+	public void mostrarCadenaCaMeLcAsE() {
+		for(int i=0;i<cadena.length();i++) {
+			if(i%2==0) {
+				System.out.print(cadena.substring(i, i+1).toUpperCase());
+			}else {
+				System.out.print(cadena.substring(i, i+1).toLowerCase());
+			}
+		}
+		System.out.println();
+	}
 	
 }
 public class PruebaTDAString {
@@ -142,7 +152,8 @@ public class PruebaTDAString {
 			System.out.println("2-Agregar/eliminar caracteres y/o subcadenas en posiciones especificas");
 			System.out.println("3-Mostar la cadena con la primer letra de cada palabra en mayúscula");
 			System.out.println("4-Cambiar la cadena");
-			System.out.println("5-Salir");
+			System.out.println("5-Mostrar Cadena en formato especial (CaMeL cAsE)");
+			System.out.println("6-Salir");
 				try {
 					op=entrada.nextByte();
 				} catch (InputMismatchException e) {
@@ -192,13 +203,16 @@ public class PruebaTDAString {
 				cade.setCadena(nuevo);
 				break;
 			case 5:
-				System.out.println("Saliendo");
+				cade.mostrarCadenaCaMeLcAsE();
 				break;
+				case 6:
+					System.out.println("Saliendo");
+					break;
 			default:
 				System.out.println("Ingresa una opcion disponible que este en el menu");
 				break;
 			}
-		}while(op!=5);
+		}while(op!=6);
 	}
 	
 
