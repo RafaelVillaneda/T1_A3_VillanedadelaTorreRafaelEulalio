@@ -36,6 +36,10 @@ class StringTDA{
 		for (int i = 0; i < sep.length; i++) {
 			System.out.println(sep[i]);
 		}
+		System.out.println("Cadena invertida por palabra");
+		for(int i=sep.length-1;i>=0;i--) {
+			System.out.println(sep[i]);
+		}
 	}
 	public void agregarEliminarCaracteresY_OSubcadenasPociEspecificas(String opcion){
 		if(opcion.equalsIgnoreCase("A")) {
